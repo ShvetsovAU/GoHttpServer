@@ -2,16 +2,18 @@ package config
 
 import (
 	"fmt"
-	"os"
+	//"os"
 	"log"
-	"github.com/jessevdk/go-flags"
+	//"github.com/jessevdk/go-flags"
 )
 
 const (
 	portMin          = 8000
 	portMax          = 8099
+	portDefault      = 8082
 	errUserParse     = "[EXIT] User/Password not specified (-u user:password)"
 	errPortIncorrect = "Error: Port should be in a range [%v:%v]"
+	msgPortSetDefault = "Set default port value: %v"
 )
 
 var AppArgs *Args
@@ -35,14 +37,17 @@ func init() {
 }
 
 func (this *Args) init() {
-	_, err := flags.ParseArgs(AppArgs, os.Args)
+	//_, err := flags.ParseArgs(AppArgs, os.Args)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
 
 	if this.Port < portMin || this.Port > portMax {
-		log.Fatal(fmt.Sprintf(errPortIncorrect, portMin, portMax))
+		//log.Fatal(fmt.Sprintf(errPortIncorrect, portMin, portMax))
+		log.Println(fmt.Sprintf(errPortIncorrect, portMin, portMax))
+		log.Println(fmt.Sprintf(msgPortSetDefault, portDefault))
+		GetDefaultPort()
 	}
 
 	//if up := strings.Split(this.User, ":"); len(up) == 2 {
@@ -55,4 +60,8 @@ func (this *Args) init() {
 
 func (this *Args) GetPort() string {
 	return fmt.Sprintf(":%v", this.Port)
+}
+
+func GetDefaultPort() {
+	AppArgs.Port = portDefault
 }

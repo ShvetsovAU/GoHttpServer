@@ -6,7 +6,8 @@ import (
 	//"strings" // пакет для работы с  UTF-8 строками
 	"log" // пакет для логирования
 	"strings"
-	//"config"
+	//"github.com/shvetsovau/GoHttpServer/config"
+	"./config"
 )
 
 func main() {
