@@ -35,8 +35,8 @@ package main
 
 import (
 	"log"
-	"./httpscerts"
-	"./config"
+	"github.com/shvetsovau/GoHttpServer/httpscerts"
+	"github.com/shvetsovau/GoHttpServer/config"
 	"net/http"
 	"fmt"
 	"strings"
