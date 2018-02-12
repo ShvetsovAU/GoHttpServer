@@ -34,11 +34,11 @@
 package main
 
 import (
-	"log"
+	"log" // пакет для логирования
 	"github.com/shvetsovau/GoHttpServer/httpscerts"
 	"github.com/shvetsovau/GoHttpServer/config"
-	"net/http"
-	"fmt"
+	"net/http" // пакет для поддержки HTTP протокола
+	"fmt" // пакет для форматированного ввода вывода
 	"strings"
 )
 
@@ -94,7 +94,7 @@ func main() {
 	//	log.Fatal("ListenAndServeTLS: ", err)
 	//}
 
-	// Запуск HTTPS сервера в отдельной go-рутине
+	// Запуск HTTPS сервера (если нужно будет перенаправление с HTTP на HTTPS, нужно будет запускать HTTPS в отдельной go-рутине)
 	http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", nil)
 
 	//// Запуск HTTP сервера и редирект всех входящих запросов на HTTPS

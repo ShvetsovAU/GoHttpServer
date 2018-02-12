@@ -2,9 +2,9 @@ package config
 
 import (
 	"fmt"
-	//"os"
 	"log"
-	//"github.com/jessevdk/go-flags"
+	"github.com/jessevdk/go-flags"
+	"os"
 )
 
 const (
@@ -37,15 +37,15 @@ type Args struct {
 func init() {
 	AppArgs = new(Args)
 	AppArgs.init()
-	//AppArgs.Info()
+	AppArgs.Info()
 }
 
 func (this *Args) init() {
-	//_, err := flags.ParseArgs(AppArgs, os.Args)
+	_, err := flags.ParseArgs(AppArgs, os.Args)
 
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if this.Port < portMin || this.Port > portMax {
 		//log.Fatal(fmt.Sprintf(errPortIncorrect, portMin, portMax))
@@ -61,6 +61,11 @@ func (this *Args) init() {
 	//} else {
 	//	log.Fatal(errUserParse)
 	//}
+}
+
+func (this *Args) Info() {
+	log.Printf("Command line arguments port:%v host:%v db:%v u:%v/%v qhost:%v qmail:%v jobs:%v\n",
+		this.Port, this.Host, this.DB, this.User, this.Password, this.AmqpHost, this.MailsQueue, this.JobsCfg)
 }
 
 //Получить порт из настроек
