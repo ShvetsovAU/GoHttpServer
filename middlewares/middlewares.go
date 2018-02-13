@@ -10,6 +10,18 @@ import (
 
 var once sync.Once
 
+func AcceptHandler(next http.Handler) http.Handler {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("Accept") != "application/vnd.api+json" {
+			panic(errors.NewHttp(406, "Accept header must be set to: 'application/vnd.api+json'"))
+		}
+
+		next.ServeHTTP(w, r)
+	}
+
+	return http.HandlerFunc(fn)
+}
+
 func ContentTypeHandler(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Content-Type") != "application/vnd.api+json" {

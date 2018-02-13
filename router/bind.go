@@ -5,7 +5,8 @@ import (
 	"net/http"
 	"github.com/julienschmidt/httprouter"
 	"github.com/justinas/alice"
-	"github.com/shvetsovau/GoHttpServer/middlewares"
+	"../middlewares"
+	"../handlers"
 )
 
 func GetRoutes() http.Handler {
@@ -19,11 +20,14 @@ func GetRoutes() http.Handler {
 		middlewares.AcceptHandler,
 	)
 
-	// h0 + проверка аутентификации
-	h1 := h0.Append(middlewares.AuthenticationHandler)
+	//// h0 + проверка аутентификации
+	//h1 := h0.Append(middlewares.AuthenticationHandler)
+	//
+	//// h1 + проверка Content-Type в заголовке
+	//h2 := h1.Append(middlewares.ContentTypeHandler)
 
-	// h1 + проверка Content-Type в заголовке
-	h2 := h1.Append(middlewares.ContentTypeHandler)
+	router.Get("/", h0.ThenFunc(handlers.HomeRouterHandler))
+	router.Get("/about", h0.ThenFunc(handlers.AdminRouterHandler))
 
 	//// Группы (объекты)
 	//router.Get("/group/nodetails/:id", h1.ThenFunc(handlers.SelectGroupNoDetailsHandler)) // получить одну группу
