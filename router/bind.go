@@ -6,6 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/justinas/alice"
 	"github.com/shvetsovau/GoHttpServer/midlewares"
+	"github.com/smbody/kommunalka-server/middlewares"
 )
 
 func GetRoutes() http.Handler {
