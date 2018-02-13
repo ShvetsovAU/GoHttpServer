@@ -40,7 +40,7 @@ import (
 	"net/http" // пакет для поддержки HTTP протокола
 	"fmt" // пакет для форматированного ввода вывода
 	"strings"
-	"github.com/smbody/kommunalka-server/router"
+	"github.com/shvetsovau/GoHttpServer/router"
 )
 
 func RedirectToHttps(w http.ResponseWriter, r *http.Request) {
@@ -87,8 +87,8 @@ func main() {
 	}
 
 	// установим роутер
-	http.HandleFunc("/", HomeRouterHandler)
-	http.HandleFunc("/admin", AdminRouterHandler)
+	//http.HandleFunc("/", HomeRouterHandler)
+	//http.HandleFunc("/admin", AdminRouterHandler)
 	// задаем слушать порт
 	//err = http.ListenAndServeTLS(config.AppArgs.GetPort(), "cert.pem", "key.pem", nil)
 	//if err != nil {
