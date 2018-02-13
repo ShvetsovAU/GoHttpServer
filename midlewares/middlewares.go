@@ -5,7 +5,7 @@ import (
 	"time"
 	"log"
 	"sync"
-	"github.com/shvetsovau/errors"
+	"github.com/shvetsovau/GoHttpServer/errors"
 )
 
 var once sync.Once
