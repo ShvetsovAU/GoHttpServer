@@ -17,7 +17,7 @@ func GetRoutes() http.Handler {
 		middlewares.RecoverHandler,
 		middlewares.LoggingHandler,
 		//middlewares.DetailedLoggingHandler,
-		middlewares.AcceptHandler,
+		//middlewares.AcceptHandler,
 	)
 
 	//// h0 + проверка аутентификации
@@ -27,7 +27,7 @@ func GetRoutes() http.Handler {
 	//h2 := h1.Append(middlewares.ContentTypeHandler)
 
 	router.Get("/", h0.ThenFunc(handlers.HomeRouterHandler))
-	router.Get("/about", h0.ThenFunc(handlers.AdminRouterHandler))
+	router.Get("/admin", h0.ThenFunc(handlers.AdminRouterHandler))
 
 	//// Группы (объекты)
 	//router.Get("/group/nodetails/:id", h1.ThenFunc(handlers.SelectGroupNoDetailsHandler)) // получить одну группу
