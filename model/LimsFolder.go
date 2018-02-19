@@ -11,3 +11,7 @@ type LimsFolder struct {
 	FolderName 	string        	`bson:"order_name" json:"folderName"`
 	FolderDate	time.Time 		`bson:"date" json:"folderDate"`
 }
+
+type LimsFoldersCollection struct {
+	Items []LimsFolder `json:"items"`
+}
