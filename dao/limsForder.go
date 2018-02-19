@@ -3,10 +3,12 @@ package dao
 import (
 	"github.com/shvetsovau/GoHttpServer/model"
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type LimsFolderDao struct {
 	limsFolders	*mgo.Collection
+	utilities 	*mgo.Collection
 }
 
 // implement Crud interface
