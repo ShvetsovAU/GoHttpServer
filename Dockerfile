@@ -6,7 +6,8 @@ RUN go get \
  github.com/gorilla/context \
  github.com/jessevdk/go-flags \
  github.com/julienschmidt/httprouter \
- github.com/justinas/alice
+ github.com/justinas/alice \
+ gopkg.in/mgo.v2
 
 RUN go install github.com/shvetsovau/GoHttpServer
 
