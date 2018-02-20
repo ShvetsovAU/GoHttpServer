@@ -16,18 +16,19 @@ func (dao *LimsFolderDao) GetById(entity interface{}, id interface{}) error {
 	return err
 }
 
-func (dao *LimsFolderDao) GetAll(gid string) (model.LimsFoldersCollection, error) {
-	limsFoldersCollection := model.LimsFoldersCollection{}
+//Доделать! нет никакого gid!
+func (dao *LimsFolderDao) GetAll(gid string) (model.LimsFolderCollection, error) {
+	limsFolderCollection := model.LimsFolderCollection{}
 	query := bson.M{"gid": bson.ObjectIdHex(gid)}
-	err := dao.limsFolders.Find(query).All(&limsFoldersCollection.Items)
+	err := dao.limsFolders.Find(query).All(&limsFolderCollection.Items)
 	if err != nil {
-		return limsFoldersCollection, err
+		return limsFolderCollection, err
 	}
-	return limsFoldersCollection, nil
+	return limsFolderCollection, nil
 }
 
 // implement LimsFolderDao interface
-func (dao *LimsFolderDao) InsertBill(limsFolder *model.LimsFolder) (interface{}, error) {
+func (dao *LimsFolderDao) InsertLimsFolder(limsFolder *model.LimsFolder) (interface{}, error) {
 	if limsFolder.Id == "" {
 		limsFolder.Id = bson.NewObjectId()
 	}
