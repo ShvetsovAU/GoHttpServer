@@ -52,8 +52,9 @@ func (this *Args) init() {
 		log.Println(fmt.Sprintf(errPortIncorrect, portMin, portMax))
 		log.Println(fmt.Sprintf(msgPortSetDefault, portDefault))
 		//SetDefaultPort()
-		SetDefaultCertificateValue()
 	}
+
+	SetDefaultCertificateValue()
 
 	//if this.Host == "localhost" {
 	//	SetDefaultHost();
@@ -89,7 +90,7 @@ func (this *Args) GetPort() string {
 func (this *Args) GetHost() string {
 
 	//Если строка пустая, устанавливаем значение по умолчанию
-	if len(this.Host) == 0 {
+	if (len(this.Host) == 0 || this.Host == "localhost") {
 		SetDefaultHost()
 	}
 
