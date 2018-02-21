@@ -11,7 +11,7 @@ const (
 	portMin          = 8000
 	portMax          = 8099
 	portDefault      = 8083
-	hostDefault      = "localhost"
+	hostDefault      = "192.168.99.100"//"localhost"
 	errUserParse     = "[EXIT] User/Password not specified (-u user:password)"
 	errPortIncorrect = "Error: Port should be in a range [%v:%v]"
 	msgPortSetDefault = "Set default port value: %v"
