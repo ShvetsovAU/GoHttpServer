@@ -18,7 +18,6 @@ func RedirectToHttps(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	log.SetFlags(log.Lshortfile)
-	log.Println("Server starting...")
 
 	// Проверяем, доступен ли cert файл.
 	err := httpscerts.Check("cert.pem", "key.pem")
@@ -44,11 +43,13 @@ func main() {
 	//	log.Fatal("ListenAndServeTLS: ", err)
 	//}
 
+	log.Println("Server starting...")
+
 	// Запуск HTTPS сервера (если нужно будет перенаправление с HTTP на HTTPS, нужно будет запускать HTTPS в отдельной go-рутине)
-	http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", router.GetRoutes())
+	//http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", router.GetRoutes())
 
 	//// Запуск HTTP сервера и редирект всех входящих запросов на HTTPS
-	//http.ListenAndServe(":8080", http.HandlerFunc(redirectToHttps))
+	http.ListenAndServe(config.AppArgs.GetFullHost(), router.GetRoutes())
 
 	log.Println("Server is switch off")
 

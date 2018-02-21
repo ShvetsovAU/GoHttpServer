@@ -66,7 +66,7 @@ func LoggingHandler(next http.Handler) http.Handler {
 		t1 := time.Now()
 		next.ServeHTTP(w, r)
 		t2 := time.Now()
-		log.Printf("[%v] %q %v\n", r.Method, r.URL, t2.Sub(t1))
+		log.Printf("Method - [%v], URL - [%q], elapsed time - [%v]\n", r.Method, r.URL, t2.Sub(t1))
 	}
 
 	return http.HandlerFunc(fn)
