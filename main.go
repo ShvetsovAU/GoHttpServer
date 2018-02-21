@@ -46,10 +46,10 @@ func main() {
 	log.Println("Server starting...")
 
 	// Запуск HTTPS сервера (если нужно будет перенаправление с HTTP на HTTPS, нужно будет запускать HTTPS в отдельной go-рутине)
-	//http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", router.GetRoutes())
+	http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", router.GetRoutes())
 
 	//// Запуск HTTP сервера и редирект всех входящих запросов на HTTPS
-	http.ListenAndServe(config.AppArgs.GetFullHost(), router.GetRoutes())
+	//http.ListenAndServe(config.AppArgs.GetFullHost(), router.GetRoutes())
 
 	log.Println("Server is switch off")
 
