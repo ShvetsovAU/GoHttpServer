@@ -43,8 +43,8 @@ func main() {
 	//	log.Fatal("ListenAndServeTLS: ", err)
 	//}
 
-	log.Println("Server starting...\n")
-	log.Println("Server addres is [%v]", config.AppArgs.GetFullHost())
+	log.Println("Server starting...")
+	log.Println("Server addres is ", config.AppArgs.GetFullHost())
 
 	// Запуск HTTPS сервера (если нужно будет перенаправление с HTTP на HTTPS, нужно будет запускать HTTPS в отдельной go-рутине)
 	http.ListenAndServeTLS(config.AppArgs.GetFullHost(), "cert.pem", "key.pem", router.GetRoutes())
