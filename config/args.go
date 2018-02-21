@@ -11,7 +11,7 @@ const (
 	portMin          = 8000
 	portMax          = 8099
 	portDefault      = 8083
-	hostDefault      =  "192.168.99.100" //"localhost"
+	hostDefault      =  "localhost"
 	errUserParse     = "[EXIT] User/Password not specified (-u user:password)"
 	errPortIncorrect = "Error: Port should be in a range [%v:%v]"
 	msgPortSetDefault = "Set default port value: %v"
@@ -56,9 +56,9 @@ func (this *Args) init() {
 
 	SetDefaultCertificateValue()
 
-	//if this.Host == "localhost" {
-	//	SetDefaultHost();
-	//}
+	if this.Host == "localhost" {
+		SetDefaultHost();
+	}
 
 	//this.Host = hostDefault
 
@@ -90,7 +90,7 @@ func (this *Args) GetPort() string {
 func (this *Args) GetHost() string {
 
 	//Если строка пустая, устанавливаем значение по умолчанию
-	if (len(this.Host) == 0 || this.Host == "localhost") {
+	if len(this.Host) == 0 {
 		SetDefaultHost()
 	}
 
