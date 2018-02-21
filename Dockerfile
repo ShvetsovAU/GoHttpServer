@@ -15,5 +15,6 @@ RUN go install github.com/shvetsovau/GoHttpServer
 
 WORKDIR /go/bin
 ENTRYPOINt ["/go/bin/GoHttpServer"]
+CMD ["-a 192.168.99.100"]
 
 EXPOSE 8083
