@@ -59,7 +59,7 @@ func (this *Args) init() {
 	//	SetDefaultHost();
 	//}
 
-	this.Host = hostDefault
+	//this.Host = hostDefault
 
 	//if up := strings.Split(this.User, ":"); len(up) == 2 {
 	//	this.User = up[0]
