@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"log"
 	"fmt"
-	"github.com/shvetsovau/GoHttpServer/errors"
+	"github.com/shvetsovau/gohttpserver/errors"
 )
 
 func RecoverHandler(next http.Handler) http.Handler {

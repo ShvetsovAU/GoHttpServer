@@ -1,6 +1,6 @@
 FROM golang:latest
 
-ADD . $GOPATH/src/github.com/shvetsovau/GoHttpServer
+ADD . $GOPATH/src/github.com/shvetsovau/gohttpserver
 ADD cert.pem /go/bin/cert.pem
 ADD key.pem /go/bin/key.pem
 
@@ -11,9 +11,9 @@ RUN go get \
  github.com/justinas/alice \
  gopkg.in/mgo.v2
 
-RUN go install github.com/shvetsovau/GoHttpServer
+RUN go install github.com/shvetsovau/gohttpserver
 
 WORKDIR /go/bin
-ENTRYPOINt ["/go/bin/GoHttpServer"]
+ENTRYPOINt ["/go/bin/gohttpserver"]
 
 EXPOSE 8083

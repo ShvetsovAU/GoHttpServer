@@ -83,7 +83,7 @@ func (this *Args) GetPort() string {
 		SetDefaultPort()
 	}
 
-	return fmt.Sprintf("%v", this.Port)
+	return fmt.Sprintf(":%v", this.Port)
 }
 
 //Получить хост из настроек
@@ -99,7 +99,7 @@ func (this *Args) GetHost() string {
 
 //Получить полный пусть к хосту (хост + порт)
 func (this *Args) GetFullHost() string {
-	return fmt.Sprintf("%v:%v", this.GetHost(), this.GetPort())
+	return fmt.Sprintf("%v%v", this.GetHost(), this.GetPort())
 }
 
 //Установить порт, используемый по умолчанию

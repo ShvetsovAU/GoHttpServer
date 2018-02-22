@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 	"encoding/json"
-	"github.com/shvetsovau/GoHttpServer/model"
+	"github.com/shvetsovau/gohttpserver/model"
 )
 
 func CreateLimsFolderHandler(w http.ResponseWriter, r *http.Request) {

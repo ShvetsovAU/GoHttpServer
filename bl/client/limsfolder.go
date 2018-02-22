@@ -3,8 +3,8 @@ package client
 import (
 	//"github.com/smbody/kommunalka-server/common/utils"
 	//"github.com/smbody/kommunalka-server/bl/rights"
-	"github.com/shvetsovau/GoHttpServer/dao"
-	"github.com/shvetsovau/GoHttpServer/model"
+	"github.com/shvetsovau/gohttpserver/dao"
+	"github.com/shvetsovau/gohttpserver/model"
 	//"github.com/smbody/kommunalka-server/common/utils"
 )
 

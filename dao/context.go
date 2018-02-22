@@ -3,7 +3,7 @@ package dao
 import (
 	"sync"
 	"gopkg.in/mgo.v2"
-	"github.com/shvetsovau/GoHttpServer/config"
+	"github.com/shvetsovau/gohttpserver/config"
 )
 
 type context struct {

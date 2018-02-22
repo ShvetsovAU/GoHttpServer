@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"github.com/julienschmidt/httprouter"
 	"github.com/justinas/alice"
-	"github.com/shvetsovau/GoHttpServer/middlewares"
-	"github.com/shvetsovau/GoHttpServer/handlers"
+	"github.com/shvetsovau/gohttpserver/middlewares"
+	"github.com/shvetsovau/gohttpserver/handlers"
 )
 
 func GetRoutes() http.Handler {

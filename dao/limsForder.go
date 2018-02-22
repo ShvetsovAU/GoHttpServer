@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"github.com/shvetsovau/GoHttpServer/model"
+	"github.com/shvetsovau/gohttpserver/model"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
