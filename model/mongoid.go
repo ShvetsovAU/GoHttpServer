@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	"github.com/shvetsovau/GoHttpServer/constants"
+	"github.com/shvetsovau/gohttpserver/constants"
 	"gopkg.in/mgo.v2/bson"
 )
 
