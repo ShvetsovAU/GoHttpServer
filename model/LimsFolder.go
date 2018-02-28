@@ -6,15 +6,15 @@ import (
 )
 
 type LimsFolder struct {
-	Id 				bson.ObjectId 	`bson:"_id,omitempty" json:"-"`
-	FolderId 		string        	`bson:"order_id" json:"folderId"`
-	FolderName 		string        	`bson:"order_name" json:"folderName"`
-	FolderDate		time.Time 		`bson:"date" json:"folderDate"`
-	MaterialType	MaterialType
-	Material		Material
-	Contractor		Contractor			`provider or customer`
-	SelectionPoint	SelectionPoint
-	Parameters 		LimsFolderParameterCollection
+	Id 					bson.ObjectId 					`bson:"_id,omitempty" json:"id"`
+	FolderId 			string        					`bson:"folderId" json:"folderId"`
+	FolderName 			string        					`bson:"folderName" json:"folderName"`
+	FolderDate			time.Time 						`bson:"folderDate" json:"folderDate"`
+	MaterialTypeId		bson.ObjectId					`bson:"materialTypeId" json:"materialTypeId"`
+	MaterialId			bson.ObjectId					`bson:"materialId" json:"materialId"`
+	ContractorId		bson.ObjectId					`bson:"contractorId" json:"contractorId"`//	`provider or customer`
+	SelectionPointId	bson.ObjectId					`bson:"selectionPointId" json:"selectionPointId"`
+	Parameters 			LimsFolderParameterCollection	`bson:"parameters" json:"parameters"`
 }
 
 type LimsFolderCollection struct {
