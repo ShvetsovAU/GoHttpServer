@@ -10,10 +10,16 @@ type LimsFolderDao struct {
 	limsFolders	*mgo.Collection
 }
 
-// implement Crud interface
 func (dao *LimsFolderDao) GetById(entity interface{}, id interface{}) error {
 	err := dao.limsFolders.FindId(model.ToId(id)).One(entity)
 	return err
+}
+
+// implement Crud interface
+func (dao *LimsFolderDao) GetLimsFolder(limsFolderId interface{}) (*model.LimsFolder, error) {
+	limsFolder := &model.LimsFolder{}
+	err := dao.GetById(limsFolder, limsFolderId)
+	return limsFolder, err
 }
 
 func (dao *LimsFolderDao) GetAll() (model.LimsFolderCollection, error) {
@@ -27,15 +33,15 @@ func (dao *LimsFolderDao) GetAll() (model.LimsFolderCollection, error) {
 }
 
 // implement LimsFolderDao interface
-func (dao *LimsFolderDao) InsertLimsFolder(limsFolder *model.LimsFolder) (interface{}, error) {
+func (dao *LimsFolderDao) Insert(limsFolder *model.LimsFolder) (interface{}, error) {
 	if limsFolder.Id == "" {
 		limsFolder.Id = bson.NewObjectId()
 	}
 	return limsFolder.Id, dao.limsFolders.Insert(limsFolder)
 }
 
-// implement DaoBills interface
-func (dao LimsFolderDao) UpdateLimsFolder(limsFolder *model.LimsFolder) error {
+// implement LimsFolderDao interface
+func (dao LimsFolderDao) Update(limsFolder *model.LimsFolder) error {
 	_, err := dao.limsFolders.UpsertId(limsFolder.Id, limsFolder)
 	return err
 }

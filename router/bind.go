@@ -29,6 +29,9 @@ func GetRoutes() http.Handler {
 	router.Get("/", h0.ThenFunc(handlers.HomeRouterHandler))
 	router.Get("/admin", h0.ThenFunc(handlers.AdminRouterHandler))
 
+	//Заявки ЛИМС
+	router.Get("/limsFolder/all", h0.ThenFunc(handlers.GetAllLimsFoldersHandler))
+	router.Get("/limsFolder/find/:id", h0.ThenFunc(handlers.GetLimsFolderHandler))
 	router.Post("/limsFolder/create", h0.ThenFunc(handlers.CreateLimsFolderHandler))
 	router.Put("/limsFolder/update", h0.ThenFunc(handlers.UpdateLimsFolderHandler))
 	router.Delete("/limsFolder/delete/:id", h0.ThenFunc(handlers.DeleteLimsFolderHandler))

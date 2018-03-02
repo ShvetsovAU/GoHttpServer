@@ -6,13 +6,26 @@ import (
 	"github.com/shvetsovau/gohttpserver/model"
 )
 
+func GetAllLimsFoldersHandler(w http.ResponseWriter, r *http.Request) {
+
+	limsFolderCollection := getLimsFolderBl(r).GetAll()
+	w.Header().Set("Content-Type", "application/vnd.api+json")
+	json.NewEncoder(w).Encode(limsFolderCollection)
+}
+
+func GetLimsFolderHandler(w http.ResponseWriter, r *http.Request) {
+	limsFolder := getLimsFolderBl(r).GetLimsFolder(getParameter(r, "id"))
+	w.Header().Set("Content-Type", "application/vnd.api+json")
+	json.NewEncoder(w).Encode(limsFolder)
+}
+
 func CreateLimsFolderHandler(w http.ResponseWriter, r *http.Request) {
 	limsFolder := &model.LimsFolder{}
-	if err := json.NewDecoder(r.Body).Decode(&limsFolder); err != nil {
-		panic(err)
-	}
-	//limsFolder = getBillBL(r).Create(limsFolder, getParameter(r, "id"))
-	//limsFolder = getBillBL(r).Create(limsFolder)
+	//if err := json.NewDecoder(r.Body).Decode(&limsFolder); err != nil {
+	//	panic(err)
+	//}
+
+	limsFolder = getLimsFolderBl(r).Create(limsFolder)
 	w.Header().Set("Content-Type", "application/vnd.api+json")
 	json.NewEncoder(w).Encode(limsFolder)
 }
@@ -23,12 +36,15 @@ func UpdateLimsFolderHandler(w http.ResponseWriter, r *http.Request) {
 	if err := json.NewDecoder(r.Body).Decode(&limsFolder); err != nil {
 		panic(err)
 	}
+
+	getLimsFolderBl(r).Update(&limsFolder)
+
 	w.Header().Set("Content-Type", "application/vnd.api+json")
-	//json.NewEncoder(w).Encode(getBillBL(r).Update(&limsFolder))
+	json.NewEncoder(w).Encode(&limsFolder)
 }
 
 func DeleteLimsFolderHandler(w http.ResponseWriter, r *http.Request) {
-	//getBillBL(r).Delete(getParameter(r, "id"))
+	getLimsFolderBl(r).Delete(getParameter(r, "id"))
 	w.Header().Set("Content-Type", "application/vnd.api+json")
 	json.NewEncoder(w).Encode(true)
 }

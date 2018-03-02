@@ -10,12 +10,12 @@ type LimsFolder struct {
 	FolderId 			string        					`bson:"folderId" json:"folderId"`
 	FolderName 			string        					`bson:"folderName" json:"folderName"`
 	FolderDate			time.Time 						`bson:"folderDate" json:"folderDate"`
-	MaterialTypeId		bson.ObjectId					`bson:"materialTypeId" json:"materialTypeId"`
-	MaterialId			bson.ObjectId					`bson:"materialId" json:"materialId"`
+	MaterialTypeId		bson.ObjectId					`bson:"materialTypeId,omitempty" json:"materialTypeId"`
+	MaterialId			bson.ObjectId					`bson:"materialId,omitempty" json:"materialId"`
 
 	//provider or customer
-	ContractorId		bson.ObjectId					`bson:"contractorId" json:"contractorId"`
-	SelectionPointId	bson.ObjectId					`bson:"selectionPointId" json:"selectionPointId"`
+	ContractorId		bson.ObjectId					`bson:"contractorId,omitempty" json:"contractorId"`
+	SelectionPointId	bson.ObjectId					`bson:"selectionPointId,omitempty" json:"selectionPointId"`
 	Parameters 			LimsFolderParameterCollection	`bson:"parameters" json:"parameters"`
 }
 

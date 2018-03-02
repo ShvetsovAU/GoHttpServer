@@ -1,5 +1,4 @@
-package client
-
+package bl
 
 func newBaseBl(userId string) BaseBL {
 	//_permit := rights.NewCheckPermit(userId, dao.GetCrudDispatcher())
